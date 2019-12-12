@@ -1,0 +1,34 @@
+cmake_policy(SET CMP0007 NEW)
+cmake_policy(SET CMP0011 NEW)
+
+set(ADD_TO_LINE1 "################################################################################")
+set(ADD_TO_LINE2 "## Added from @CMAKE_CURRENT_SOURCE_DIR@/remove_gtest_from_installation.cmake")
+set(ADD_TO_LINE3 "set(CMAKE_INSTALL_LOCAL_ONLY ON)")
+set(ADD_TO_LINE4 "## From here on cmake automatically generated")
+set(ADD_TO_LINE5 "################################################################################\n")
+
+set(ADD_TO_EOF1 ${ADD_TO_LINE1})
+set(ADD_TO_EOF2 ${ADD_TO_LINE2})
+set(ADD_TO_EOF3 "unset(CMAKE_INSTALL_LOCAL_ONLY)")
+set(ADD_TO_EOF4 "################################################################################")
+
+file(STRINGS @CMAKE_CURRENT_BINARY_DIR@/cmake_install.cmake cmake_install_file_content)
+
+list(GET cmake_install_file_content 0 line1_comment)
+if(NOT ";${line1_comment};" STREQUAL ";${ADD_TO_LINE1};")
+    message("Disabling googletest from installation")
+    message("-- Modifying file '@CMAKE_CURRENT_BINARY_DIR@/cmake_install.cmake'")
+    list(INSERT cmake_install_file_content 0 
+         ${ADD_TO_LINE1} ${ADD_TO_LINE2} ${ADD_TO_LINE3} ${ADD_TO_LINE4} ${ADD_TO_LINE5})
+    list(APPEND cmake_install_file_content 
+         ${ADD_TO_EOF1} ${ADD_TO_EOF2} ${ADD_TO_EOF3} ${ADD_TO_EOF4})
+    
+    file(WRITE @CMAKE_CURRENT_BINARY_DIR@/cmake_install.cmake "${ADD_TO_LINE1}")
+    list(REMOVE_AT cmake_install_file_content 0)
+    
+    foreach(line_to_add ${cmake_install_file_content})
+        file(APPEND @CMAKE_CURRENT_BINARY_DIR@/cmake_install.cmake "\n${line_to_add}")
+    endforeach(line_to_add ${cmake_install_file_content})
+else(NOT ";${line1_comment};" STREQUAL ";${ADD_TO_LINE1};")
+    message("googletest installation already disabled")
+endif(NOT ";${line1_comment};" STREQUAL ";${ADD_TO_LINE1};")

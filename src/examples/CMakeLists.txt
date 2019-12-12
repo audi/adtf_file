@@ -1,0 +1,5 @@
+add_subdirectory(canwriter)
+add_subdirectory(csv_processor)
+add_subdirectory(csv_reader)
+add_subdirectory(fileaccess)
+add_subdirectory(referencedfiles)

@@ -1,0 +1,7 @@
+<adtf:export xmlns:adtf="adtf">
+ <folder name="Playback">
+  <folder name="components">
+   <folder filter_tree_expanded_list="//Harddisk_Player" name="FilterTraceView" />
+  </folder>
+ </folder>
+</adtf:export>

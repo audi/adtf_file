@@ -1,0 +1,11 @@
+<adtf:compatibility>
+ <stream chunk_count="644" first_index="31" first_time="120692" internal_handle="1" last_time="40510197" stream_name="Sensor_28">
+  <media_type major="65680" sub="1">adtf.core.media_type</media_type>
+ </stream>
+ <stream chunk_count="406" first_index="0" first_time="7131" internal_handle="2" last_time="40517389" stream_name="Car_2">
+  <media_type major="65552" sub="1">adtf.core.media_type</media_type>
+ </stream>
+ <stream chunk_count="11478" first_index="1" first_time="18969" internal_handle="0" last_time="40550687" stream_name="can_raw">
+  <media_type major="512" sub="2">adtf.core.media_type</media_type>
+ </stream>
+</adtf:compatibility>

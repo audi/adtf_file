@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<graph_file xmlns="adtf/xsd/graph">
+  <file_version>
+    <major>1</major>
+    <minor>0</minor>
+  </file_version>
+  <name>ADTF CAN Playback</name>
+  <graphs/>
+  <streaming_graphs>
+    <streaming_graph>
+      <name>Playback</name>
+      <streaming_sources>
+        <streaming_source>
+          <name>Player</name>
+          <class_id>playback_input.streaming_services.adtf.cid</class_id>
+          <input_pins/>
+          <output_pins>
+            <pin>
+              <name>rawcan</name>
+            </pin>
+          </output_pins>
+          <runners/>
+          <init_priority>0</init_priority>
+        </streaming_source>
+      </streaming_sources>
+      <streaming_dock_in_ports>
+        <sample_stream>
+          <name>CAN</name>
+          <class_id>default_sample_stream.ant.streaming.adtf.cid</class_id>
+        </sample_stream>
+      </streaming_dock_in_ports>
+      <streaming_dock_out_ports/>
+      <streaming_sinks/>
+      <sample_streams/>
+      <connections>
+        <connection>
+          <name>Player.rawcan_Filter Graph Dock.CAN</name>
+          <source_connector_path>
+            <connector>rawcan</connector>
+            <component>Player</component>
+            <portbindingobject/>
+          </source_connector_path>
+          <destination_connector_path>
+            <connector>CAN</connector>
+            <component>Filter Graph Dock</component>
+            <portbindingobject/>
+          </destination_connector_path>
+          <priority>0</priority>
+          <sync>true</sync>
+        </connection>
+      </connections>
+    </streaming_graph>
+  </streaming_graphs>
+</graph_file>

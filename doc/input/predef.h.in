@@ -1,0 +1,5 @@
+#cmakedefine HAVE_CSTDINT
+#cmakedefine HAVE_STDINT_H
+#cmakedefine HAVE_THREAD
+#cmakedefine HAVE_SHARED_MUTEX
+#cmakedefine DISABLE_FALLBACK_COMPILER_CXX_NULLPTR

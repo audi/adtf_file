@@ -1,0 +1,50 @@
+/**
+ * @file
+ * Indexed file writer.
+ *
+ * @copyright
+ * @verbatim
+   Copyright @ 2017 Audi Electronics Venture GmbH. All rights reserved.
+
+       This Source Code Form is subject to the terms of the Mozilla
+       Public License, v. 2.0. If a copy of the MPL was not distributed
+       with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+   If it is not possible or desirable to put the notice in a particular file, then
+   You may include the notice in a location (such as a LICENSE file in a
+   relevant directory) where a recipient would be likely to look for such a notice.
+
+   You may add additional accurate notices of copyright ownership.
+   @endverbatim
+ */
+
+#ifndef INDEXEDFILE_WRITER_V500_CLASS_HEADER
+#define INDEXEDFILE_WRITER_V500_CLASS_HEADER
+
+#include "indexedfile_types_v500.h"
+#include <ifhd/v400/indexedfilewriter_v400.h>
+#include <cstdint>
+
+
+namespace ifhd
+{
+namespace v500
+{
+
+class IndexedFileWriter : public v400::IndexedFileWriter
+{
+public:
+    IndexedFileWriter() : v400::IndexedFileWriter()
+    {
+    };
+    uint32_t getSupportedVersion() const
+    {
+        return version_id;
+    }
+};
+
+} //namespace v500
+} //namespace ifhd
+
+//*************************************************************************************************
+#endif // _INDEXEDFILE_WRITER_V500_CLASS_HEADER_

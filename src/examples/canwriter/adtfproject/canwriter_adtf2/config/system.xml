@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<adtf:project xmlns:adtf="adtf">
+ <general_settings>
+  <property name="active_configuration" type="String" value="Playback" />
+ </general_settings>
+ <configurations>
+  <configuration description="" name="Live" />
+  <configuration description="" name="Playback">
+   <graph>
+    <filter alias="Harddisk_Player" idref="adtf.stg.harddisk_player" priority="1">
+     <settings>
+      <property name="filename" type="String" value="..\..\..\..\..\..\..\..\win64_vc140\build\src\examples\canwriter\test_can.dat" />
+     </settings>
+    </filter>
+   </graph>
+  </configuration>
+  <configuration description="" name="Recording" />
+ </configurations>
+ <fileinfo adtfversion="2.14.0" configversion="1.3" />
+ <configuration_settings />
+</adtf:project>

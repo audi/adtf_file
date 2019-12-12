@@ -1,0 +1,53 @@
+##generate the doxyfile to stdout
+execute_process(COMMAND @DOXYGEN_EXECUTABLE@ -s -g - OUTPUT_VARIABLE doxygen_out)
+
+##Get all predefined macros that were set during CMake configuration
+file(STRINGS @CMAKE_CURRENT_BINARY_DIR@/input/predef.h _predef)
+foreach(_define ${_predef})
+    string(REGEX REPLACE "[#]define (.+)" "\\1 " _define ${_define})
+    string(REGEX REPLACE "(.*[#]undef .+)" "" _define ${_define})
+    set(_predefined "${_predefined}${_define}")
+endforeach(_define ${_predef})
+unset(_define)
+unset(_predef)
+
+##set any doxygen tag according to our needs, leave the rest untouched (= default)
+# never use the absolute path for INPUT, otherwise call graphs might be generated with absolute
+# paths inside. Use relative path and execute doxygen from within install dir WORKING_DIRECTORY
+string(REGEX REPLACE "(INPUT +[=])"
+                     "\\1 ../doc ../doc/input libraries/utils5extension libraries/adtf_file libraries/ifhd_file libraries/adtfdat_processing examples ../README.md" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(FILE_PATTERNS +[=])"
+                     "\\1 readme.txt *.h *.dox *.md" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(EXCLUDE_PATTERNS +[=])"
+                     "\\1 */test/* *.cpp */additional/*" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(EXAMPLE_PATH +[=])"
+                     "\\1 ../ ../doc/license ../3rdparty" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(RECURSIVE +[=]) NO"
+                     "\\1 YES" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(PROJECT_NAME +[=]) \"My Project\""
+                     "\\1 \"@PROJECT_NAME@\"" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(PROJECT_NUMBER +[=])"
+                     "\\1 v@PROJECT_VERSION@" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(OUTPUT_DIRECTORY +[=])"
+                     "\\1 @CMAKE_INSTALL_PREFIX@/doc" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(SHORT_NAMES +[=]) NO"
+                     "\\1 YES" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(GENERATE_LATEX +[=]) YES"
+                     "\\1 NO" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(HAVE_DOT +[=]) NO"
+                     "\\1 @DOXYGEN_DOT_FOUND@" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(DOT_PATH +[=])"
+                     "\\1 @DOXYGEN_DOT_EXECUTABLE@" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(PREDEFINED +[=])"
+                     "\\1 ${_predefined}" doxygen_out ${doxygen_out})
+string(REGEX REPLACE "(GENERATE_TREEVIEW +[=]) NO"
+                     "\\1 YES" doxygen_out ${doxygen_out})
+                     
+
+##generate the documentation with doxygen
+#
+file(WRITE @CMAKE_CURRENT_BINARY_DIR@/Doxyfile ${doxygen_out})
+execute_process(COMMAND @DOXYGEN_EXECUTABLE@ @CMAKE_CURRENT_BINARY_DIR@/Doxyfile
+                WORKING_DIRECTORY @CMAKE_CURRENT_LIST_DIR@/../src)
+
+unset(_predefined)

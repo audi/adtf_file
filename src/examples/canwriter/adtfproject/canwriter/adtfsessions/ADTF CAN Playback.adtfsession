@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<session xmlns="adtf/xsd/session">
+  <file_version>
+    <major>1</major>
+    <minor>0</minor>
+  </file_version>
+  <name>ADTF CAN Playback</name>
+  <adtfsystem>
+    <url>./adtfsystems/ADTF CAN Playback.adtfsystem</url>
+    <properties_url>./adtfsystems/ADTF CAN Playback.adtfproperties</properties_url>
+    <property_set/>
+    <name>ADTF CAN Playback</name>
+  </adtfsystem>
+  <adtfgraph>
+    <url>./adtfgraphs/ADTF CAN Playback.adtfgraph</url>
+    <properties_url>./adtfgraphs/ADTF CAN Playback.adtfproperties</properties_url>
+    <property_set/>
+    <name>ADTF CAN Playback</name>
+  </adtfgraph>
+  <active_streaming_graph>Playback</active_streaming_graph>
+  <active_filter_graph/>
+</session>

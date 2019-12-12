@@ -1,0 +1,5 @@
+add_subdirectory(libraries)
+if (${ifhd_build_and_install_examples})
+   add_subdirectory(examples)
+endif (${ifhd_build_and_install_examples})
+add_subdirectory(tools)

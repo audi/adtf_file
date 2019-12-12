@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<adtf:configuration xmlns:adtf="adtf">
+ <ce_layouts>
+  <configuration horizontal_scrollbar_value="1" name="Live" show="false" tab_pos="0" vertical_scrollbar_value="1" zoomfactor="1.000000" />
+  <configuration horizontal_scrollbar_value="1" name="Playback" show="true" tab_pos="0" vertical_scrollbar_value="1" zoomfactor="1.000000">
+   <component height="74" name="Harddisk_Player" width="172" x="118" y="134">
+    <output_pin name="rawcan" />
+    <property name="alias" type="string" value="Harddisk_Player" />
+    <property name="ask_for_references" type="bool" value="false" />
+    <property name="cached_sectors" type="int" value="2048" />
+    <property name="Category" type="int" value="14" />
+    <property name="ClassLabel" type="string" value="Harddisk Player" />
+    <property name="config_information" type="bool" value="true" />
+    <property name="ConfigId" type="string" value="CFG_MAIN" />
+    <property name="disable_timing_correction" type="bool" value="false" />
+    <property name="embedded_mode" type="bool" value="false" />
+    <property name="emulate_external_clocks" type="bool" value="true" />
+    <property name="enable_loop_mode" type="bool" value="false" />
+    <property name="enable_perf_log" type="bool" value="false" />
+    <property name="filename" timestamp="212363670558000000" type="file" value="..\..\..\..\..\..\..\..\win64_vc140\build\src\examples\canwriter\test_can.dat" />
+    <property name="Identifier" type="string" value="adtf.stg.harddisk_player" />
+    <property name="idref" type="string" value="adtf.stg.harddisk_player" />
+    <property name="ignore_unkown_classes" type="bool" value="false" />
+    <property name="keep_multiple_files_open" type="bool" value="false" />
+    <property name="load_references" type="bool" value="true" />
+    <property name="NamespaceType" type="string" value="/item/file/filter" />
+    <property name="perf_warning_treshold" type="int" value="500000" />
+    <property name="playback_rate" type="float" value="1" />
+    <property name="PluginDescriptionAvailable" type="bool" value="true" />
+    <property name="priority" type="int" value="1" />
+    <property name="queue_size" type="int" value="0" />
+    <property name="queue_time_span" type="int" value="1000000" />
+    <property name="reset_recording_time_offset" type="bool" value="true" />
+    <property name="send_forward_seek_reset_events" type="bool" value="true" />
+    <property name="start_paused" type="bool" value="false" />
+   </component>
+  </configuration>
+  <configuration horizontal_scrollbar_value="1" name="Recording" show="false" tab_pos="2" vertical_scrollbar_value="1" zoomfactor="1.000000" />
+ </ce_layouts>
+</adtf:configuration>

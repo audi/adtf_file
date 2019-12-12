@@ -1,0 +1,34 @@
+# Delivered Versions {#page_delivered_versions}
+ 
+## Current Releasebranch
+ 
+ The ADTF File Library is delivered as source code only. 
+ Usually you can use to build the git clone for:
+ <table>
+ 
+ <tr>
+  <td>ADTF File Library</td>
+  <td>@adtffile_VERSION@</td>
+  <td>v@adtffile_VERSION@</td>
+ </tr>
+ 
+ <tr>
+  <td>DDL Library</td>
+  <td>@ddl_VERSION@</td>
+  <td>v@ddl_VERSION@</td>
+ </tr>
+ 
+ <tr>
+  <td>a_util Library</td>
+  <td>@a_util_VERSION@</td>
+  <td>v@a_util_VERSION@</td>
+ </tr>
+
+ </table>
+
+ 
+## Older Releasebranches
+ 
+* no public release on github
+
+ 

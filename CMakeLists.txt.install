@@ -1,0 +1,15 @@
+################################################################################
+# Set CMake requirements and policy
+################################################################################
+cmake_minimum_required(VERSION 3.5.1 FATAL_ERROR)
+
+cmake_policy(SET CMP0002 NEW)
+cmake_policy(SET CMP0003 NEW)
+cmake_policy(SET CMP0011 NEW)
+cmake_policy(SET CMP0020 NEW)
+cmake_policy(SET CMP0028 NEW)
+
+project(adtffile_examples)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+add_subdirectory(src/examples)

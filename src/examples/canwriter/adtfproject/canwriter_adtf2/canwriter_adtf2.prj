@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<project name="canwriter_adtf2" version="2.0">
+    <folder name="Configuration" path="config" expand="" type="config" desc="Configuration Files">
+        <file name="System Configuration" path=".\config\system.xml" type="config/sys"/>
+    </folder>
+    <folder active="true" name="Captured Files" path="files" expand="*.dat" type="capture" desc="Tasks">
+    </folder>
+</project>

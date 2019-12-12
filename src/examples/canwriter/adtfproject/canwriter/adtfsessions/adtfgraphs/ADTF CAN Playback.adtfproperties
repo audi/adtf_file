@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<property_file xmlns="adtf/xsd/properties">
+  <file_version>
+    <major>1</major>
+    <minor>0</minor>
+  </file_version>
+  <property_packages>
+    <property_package>
+      <name>default</name>
+      <property_sets>
+        <property_set>
+          <name>streaming_graphs/Playback/streaming_sources/Player</name>
+          <properties>
+            <property>
+              <name>filenames</name>
+              <value>D:/MSI/ifhd/examples/win64_vc140/build/src/examples/canwriter/test_rawcan.dat</value>
+              <type>cFilename</type>
+            </property>
+          </properties>
+        </property_set>
+        <property_set>
+          <name>streaming_graphs/Playback/streaming_dock_in_ports/CAN</name>
+          <properties/>
+        </property_set>
+        <property_set>
+          <name>streaming_graphs/Playback/streaming_sources/Player/output_pins/rawcan</name>
+          <properties/>
+        </property_set>
+      </property_sets>
+    </property_package>
+  </property_packages>
+</property_file>

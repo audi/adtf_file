@@ -1,0 +1,17 @@
+
+set(adtfdat_processing_h ${adtfdat_processing_directory}/include/adtfdat_file_reader.h
+                         ${adtfdat_processing_directory}/include/adtfdat_processing.h
+                         ${adtfdat_processing_directory}/include/configuration.h
+                         ${adtfdat_processing_directory}/include/ddl_helpers.h
+                         ${adtfdat_processing_directory}/include/ddl_helpers.h
+                         ${adtfdat_processing_directory}/include/demultiplexer.h
+                         ${adtfdat_processing_directory}/include/multiplexer.h
+                         ${adtfdat_processing_directory}/include/processor.h
+                         ${adtfdat_processing_directory}/include/reader.h
+                         )
+                         
+set(adtfdat_processing_src ${adtfdat_processing_directory}/src/adtfdat_file_reader.cpp
+                           ${adtfdat_processing_directory}/src/demultiplexer.cpp
+                           ${adtfdat_processing_directory}/src/multiplexer.cpp
+                           )
+                         

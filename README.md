@@ -17,7 +17,7 @@ This library contains following internal packages:
  
 ### adtf_file (see src/libraries/adtf_file)
  
-The ADTF File Package with 'adtf_file::Writer' and 'adtf_file::Reader'. Depending on the ADTF File Version you 
+The ADTF File Package with `adtf_file::Writer` and `adtf_file::Reader`. Depending on the ADTF File Version you 
 may create and read Indexed Files with samples.
   
 ### ifhd_file (see src/libraries/ifhd_file)
@@ -25,8 +25,8 @@ may create and read Indexed Files with samples.
 The IFHD File Package with the 'cIndexedFileWriter' and 'cIndexedFileReader'. Depending on the File Version you 
 may create and read Indexed Files. This will not contain sample. The organisation type of data is *chunk*.
  
-* 'ifhd::v400' is for ADTF 3.
-* 'ifhd::v201_v301' is for ADTF 2.
+* `ifhd::v400` is for ADTF 3.
+* `ifhd::v201_v301` is for ADTF 2.
  
 ### utils5extension (see src/libraries/utils5extension)
 

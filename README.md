@@ -61,12 +61,12 @@ ________________________
 ### a_util library
  
 The libraries above depend on the *a_util library* 
-See a_util repository at https://github.com/AEV
+See a_util repository at https://github.com/AEV/a_util
 
 ### DDL library
 
 The libraries above depend on the *DDL library* 
-See ddl repository at https://github.com/AEV
+See ddl repository at https://github.com/AEV/ddl
  
 ### How to build
 
@@ -90,7 +90,7 @@ See [Versions](./doc/input/page_delivered_versions.md)([link](@ref page_delivere
 
 ##### Build a_util first
  
-The ADTF File Library will only build if a installation of a_utils library is provided.
+The ADTF File Library will only build if an *installation* of *a_util* library is provided.
 Following libraries of the a_utils are necessary:
 * a_util_concurrency
 * a_util_memory
@@ -101,7 +101,7 @@ Following libraries of the a_utils are necessary:
 * a_util_xml
  
 - Use CMAKE at least in version 3.5.1.  
-- Use the Release Branch \p "Release/a_util-version-branch" see [Versions](./doc/input/page_delivered_versions.md)
+- Use the Release Branch \p "v*a_util-version*" see [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
 - Do not forget to set a CMAKE_INSTALL_PREFIX 
 - Build and install for Debug and RelWithDebInfo
@@ -111,7 +111,7 @@ Following libraries of the a_utils are necessary:
 The ADTF File Library will only build if a installation of ddl library is provided.
  
 - Use CMAKE at least in version 3.5.1.  
-- Use the Release Branch \p "Release/ddl-version-branch". see [Versions](./doc/input/page_delivered_versions.md)
+- Use the Release Branch \p "v*ddl-version*". see [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
 - Do not forget to set a CMAKE_INSTALL_PREFIX 
 - Build and install for Debug and RelWithDebInfo
@@ -119,9 +119,9 @@ The ADTF File Library will only build if a installation of ddl library is provid
 ##### Build adtf_file
  
 - Use CMAKE at least in version 3.5.  
-- Use the Release Branch \p "Release/adtf-file-version-branch" See [Versions](./doc/input/page_delivered_versions.md)
+- Use the Release Branch \p "v*adtf-file-version*-branch*" See [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
-- Set the a_util_DIR to your a_util Install "lib/cmake/a_util"
+- Set the a_util_DIR to your a_util install "lib/cmake/a_util"
 - Do not forget to set a CMAKE_INSTALL_PREFIX 
 - Build and install for Debug and RelWithDebInfo
 
@@ -136,7 +136,7 @@ a_util_DIR
 must be set to *a_util_install*/lib/cmake/a_util 
 </td>
 <td>
-See a_util repository at https://github.com/AEV
+See a_util repository at https://github.com/AEV/a_util
 </td>
 </tr>
 <tr>
@@ -147,7 +147,7 @@ ddl_DIR
 must be set to *ddl_install*/cmake
 </td>
 <td>
-See ddl repository at https://github.com/AEV
+See ddl repository at https://github.com/AEV/ddl
 </td>
 </tr>
 

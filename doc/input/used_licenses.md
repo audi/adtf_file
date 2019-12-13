@@ -14,7 +14,7 @@ We are glad to use 3rd party software which is provided under following licenses
 
 ### CITYHash
  
- [MIT License](mit_cityhash.md)([link](@ref page_mpl))
+ [MIT License](mit_cityhash.md)
 
 ### Clara 1.1.2
 

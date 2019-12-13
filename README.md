@@ -34,15 +34,15 @@ This Package will provide some further helper classes needed to create an Indexe
 
 ### adtfdat_processing (see src/libraries/adtfdat_processing)
 
-This package will provide interfaces to export (adtf::dat::ant::Processor) and 
-import (adtf::dat::ant::Reader) data from/to a adtf_file::Stream of an .adtfdat file.
+This package will provide interfaces to export `adtf::dat::ant::Processor` and 
+import `adtf::dat::ant::Reader` data from/to a adtf_file::Stream of an .adtfdat file.
 
 ## ADTF File Library Tools
 
 ### adtf_dattool (see src/tools/adtf_dattool)
 
 Command line application to export/import data from/to .adtfdat files by using delivered or 
-customized adtf::dat::ant::Processor and adtf::dat::ant::Reader. 
+customized `adtf::dat::ant::Processor` and `adtf::dat::ant::Reader`. 
 For more information please launch the tool with command --help.
 
 ## Further Documentation

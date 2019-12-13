@@ -101,7 +101,7 @@ Following libraries of the a_utils are necessary:
 * a_util_xml
  
 - Use CMAKE at least in version 3.5.1.  
-- Use the Release Branch \p "v*a_util-version*" see [Versions](./doc/input/page_delivered_versions.md)
+- Use the tag  "v*a_util-version*" see [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
 - Do not forget to set a CMAKE_INSTALL_PREFIX 
 - Build and install for Debug and RelWithDebInfo
@@ -111,7 +111,7 @@ Following libraries of the a_utils are necessary:
 The ADTF File Library will only build if a installation of ddl library is provided.
  
 - Use CMAKE at least in version 3.5.1.  
-- Use the Release Branch \p "v*ddl-version*". see [Versions](./doc/input/page_delivered_versions.md)
+- Use the tag "v*ddl-version*". see [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
 - Do not forget to set a CMAKE_INSTALL_PREFIX 
 - Build and install for Debug and RelWithDebInfo
@@ -119,7 +119,7 @@ The ADTF File Library will only build if a installation of ddl library is provid
 ##### Build adtf_file
  
 - Use CMAKE at least in version 3.5.  
-- Use the Release Branch \p "v*adtf-file-version*-branch*" See [Versions](./doc/input/page_delivered_versions.md)
+- Use the tag \p "v*adtf-file-version*-branch*" See [Versions](./doc/input/page_delivered_versions.md)
 - Use CMakeLists.txt within the main directory as Source Directory
 - Set the a_util_DIR to your a_util install "lib/cmake/a_util"
 - Do not forget to set a CMAKE_INSTALL_PREFIX 

@@ -1,0 +1,124 @@
+name: C/C++ CI - tags
+
+on: 
+  push:
+    tags:
+        - 'v*'
+
+jobs:
+  
+  build-matrix:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['windows-latest', 'windows-2016', 'ubuntu-latest']
+        include:
+          - os: windows-latest
+            install_req_packages: 'choco install doxygen.install ; choco install graphviz'
+            cmake_generator: 'Visual Studio 16 2019'
+            arch_key: '-A'
+            arch_value: 'x64'
+            toolset_key: '-T'
+            toolset_value: 'v141'
+            download_cmd: 'curl -L https://github.com/AEV/${NAME}/releases/download/${VERSION}/${PACKAGE_NAME} -o ./${PACKAGE_NAME_DOWNLOADED}'
+            compress_cmd: '7z a -tzip "${env:PACKAGE_NAME}.zip" "${env:PACKAGE_NAME}"'
+            decompress_cmd: 'unzip "${PACKAGE_NAME_DOWNLOADED}"'
+            compressed_suffix: 'zip'
+            list_dir_cmd: 'dir'
+            workspace_dir: '${env:GITHUB_WORKSPACE}'
+          - os: windows-2016
+            install_req_packages: 'choco install doxygen.install ; choco install graphviz'
+            cmake_generator: 'Visual Studio 15 2017'
+            arch_key: '-A'
+            arch_value: 'x64'
+            toolset_key: '-T'
+            toolset_value: 'v140'
+            download_cmd: 'curl -L https://github.com/AEV/${NAME}/releases/download/${VERSION}/${PACKAGE_NAME} -o ./${PACKAGE_NAME_DOWNLOADED}'
+            compress_cmd: '7z a -tzip "${env:PACKAGE_NAME}.zip" "${env:PACKAGE_NAME}"'
+            decompress_cmd: 'unzip "${PACKAGE_NAME_DOWNLOADED}"'
+            compressed_suffix: 'zip'
+            list_dir_cmd: 'dir'
+            workspace_dir: '${env:GITHUB_WORKSPACE}'
+          - os: ubuntu-latest
+            install_req_packages: 'sudo apt-get -y install cmake && sudo apt-get -y install doxygen && sudo apt-get -y install graphviz'
+            cmake_generator: 'Unix Makefiles'
+            arch_key: ''
+            arch_value: ''
+            toolset_key: ''
+            toolset_value: ''
+            download_cmd: 'curl -L https://github.com/AEV/${NAME}/releases/download/${VERSION}/${PACKAGE_NAME} -o ${PACKAGE_NAME_DOWNLOADED}'
+            compress_cmd: 'tar -cvzf ${PACKAGE_NAME}.tgz ./${PACKAGE_NAME}'
+            decompress_cmd: 'tar -xvzf ${PACKAGE_NAME_DOWNLOADED}'
+            compressed_suffix: 'tgz'
+            list_dir_cmd: 'ls -la'
+            workspace_dir: '${GITHUB_WORKSPACE}'
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Get the tag name
+      id: get_tag_name
+      run: echo ::set-output name=TAG_NAME::${GITHUB_REF/refs\/tags\//}
+      shell: bash
+    - name: get required packages
+      run: ${{ matrix.install_req_packages }}
+    - name: download and extract a_util
+      env:
+        NAME: 'a_util'
+        VERSION: 'v5.6.0'
+        PACKAGE_NAME: a_util_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-v5.6.0.${{ matrix.compressed_suffix }}
+        PACKAGE_NAME_DOWNLOADED: a_util.${{ matrix.compressed_suffix }}
+      run: |
+        echo ${{ matrix.download_cmd }}
+        ${{ matrix.download_cmd }}
+        ${{ matrix.decompress_cmd }}
+        ${{ matrix.list_dir_cmd }}
+      shell: bash
+    - name: download and extract ddl
+      env:
+        NAME: 'ddl'
+        VERSION: 'v4.4.0'
+        PACKAGE_NAME: ddl_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-v4.4.0.${{ matrix.compressed_suffix }}
+        PACKAGE_NAME_DOWNLOADED: a_util.${{ matrix.compressed_suffix }}
+      run: |
+        echo ${{ matrix.download_cmd }}
+        ${{ matrix.download_cmd }}
+        ${{ matrix.decompress_cmd }}
+        ${{ matrix.list_dir_cmd }}
+      shell: bash
+    - name: configure CMake
+      run: |
+        mkdir _build
+        cd _build
+        cmake -G "${{ matrix.cmake_generator }}" ${{ matrix.arch_key }} ${{ matrix.arch_value }} ${{ matrix.toolset_key }} ${{ matrix.toolset_value }} -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="../adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}" -Da_util_DIR="${{ matrix.workspace_dir }}/a_util_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-v5.6.0/lib/cmake/a_util" -Dddl_DIR="${{ matrix.workspace_dir }}/ddl_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-v4.4.0/cmake"  ..
+    - name: cmake build
+      run: |
+        cd _build
+        cmake --build .
+    - name: cmake install
+      run: |
+        cd _build
+        cmake --build . --target install
+    #- name: test
+    #  run: |
+    #    cd _build
+    #    ctest
+    - name: Upload artifacts to current run
+      uses: actions/upload-artifact@master
+      with:
+        name: adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}
+        path: adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}
+    - name: Create Release package
+      env:
+        PACKAGE_NAME: adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}
+      run: |
+        ${{ matrix.compress_cmd }}
+        ${{ matrix.list_dir_cmd }}
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}.${{ matrix.compressed_suffix }}
+        asset_name: adtf_file_${{ matrix.os }}-${{ matrix.arch_value }}-${{ matrix.toolset_value }}-${{ steps.get_tag_name.outputs.TAG_NAME }}.${{ matrix.compressed_suffix }}
+        tag: ${{ github.ref }}
+        overwrite: true

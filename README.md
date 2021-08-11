@@ -1,3 +1,10 @@
+## ℹ️ This repository is archived 
+
+It is now maintained at https://github.com/cariad-tech
+
+
+---
+
 ADTF File Library      {#mainpage}
 =================
 
